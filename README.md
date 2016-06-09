@@ -51,7 +51,7 @@ import { guards } from "simple-guards";
 
 function division(numerator, denominator) {
   guards((guard) => {
-    guard(expensiveDetectionOfZero(denominator), "we don't want numerator to be zero");
+    guard(expensiveDetectionOfZero(numerator), "we don't want numerator to be zero");
     guard(expensiveDetectionOfZero(denominator), "denominator cannot be zero");
   })
 

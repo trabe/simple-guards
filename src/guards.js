@@ -11,5 +11,5 @@ export function guards(fn) {
 }
 
 export function guard(cond, message) {
-  guards(() => test(cond, message));
+  guards(test => test(cond, message));
 }

@@ -1,6 +1,6 @@
 {
   "name": "simple-guards",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Utils to add guard clauses to JS code",
   "author": "Trabe",
   "license": "MIT",

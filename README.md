@@ -58,3 +58,15 @@ function division(numerator, denominator) {
   // more awful code
 }
 
+
+## Changelog
+
+### next
+
+* Updated all dependencies
+* No longer use Mocha. Just jest
+* Added ESLint + Prettier to make our code nicer
+
+### 1.0.0
+
+Initial release

@@ -2,7 +2,7 @@
   "name": "simple-guards",
   "version": "1.0.0",
   "description": "Utils to add guard clauses to JS code",
-  "author": "Trabe",
+  "author": "David Barral <david@trabe.io>",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -11,25 +11,66 @@
   "bugs": {
     "url": "https://github.com/trabe/simple-guards/issues"
   },
-  "homepage": "https://github.com/trabe/simple-guards.git",
+  "homepage": "https://github.com/trabe/simple-guards",
   "main": "lib/guards.js",
   "devDependencies": {
-    "babel-cli": "^6.9.0",
-    "babel-core": "^6.0.0",
-    "babel-eslint": "^6.0.4",
-    "babel-preset-es2015": "^6.9.0",
-    "eslint": "^2.10.2",
-    "expect": "^1.20.1",
-    "mocha": "^2.4.5",
-    "mocha-eslint": "^2.0.2"
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.1",
+    "babel-preset-env": "^1.6.1",
+    "eslint": "^4.17.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-config-unobtrusive": "^1.2.1",
+    "eslint-plugin-prettier": "^2.6.0",
+    "jest": "^22.1.4",
+    "prettier": "^1.10.2"
   },
   "scripts": {
     "clean": "rm -fR ./lib",
-    "precompile": "npm run clean && npm run test",
+    "precompile": "npm run clean",
     "compile": "babel -d lib/ src/",
-    "compile:watch": "npm run compile -- --watch",
-    "test": "mocha --recursive --compilers js:babel-register",
-    "test:watch": "npm run test -- --watch",
+    "lint": "eslint ./src ./test --report-unused-disable-directives",
+    "test": "jest",
     "prepublish": "npm run compile"
+  },
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "browsers": [
+            "last 2 versions",
+            "IE >= 10"
+          ]
+        }
+      ]
+    ]
+  },
+  "jest": {
+    "testRegex": "/test/.*-test\\.jsx?$"
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "plugins": [
+      "prettier"
+    ],
+    "extends": [
+      "unobtrusive",
+      "prettier"
+    ],
+    "env": {
+      "browser": true,
+      "node": true
+    },
+    "rules": {
+      "prettier/prettier": [
+        "error",
+        {
+          "trailingComma": "all",
+          "singleQuote": false,
+          "printWidth": 120
+        }
+      ]
+    }
   }
 }

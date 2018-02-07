@@ -1,5 +1,7 @@
 # Simple Guards
 
+[![Build Status](https://travis-ci.org/trabe/simple-guards.svg?branch=master)](https://travis-ci.org/trabe/simple-guards)
+
 ## Description
 
 Simple utilities to add guard clauses to yout JS code.
@@ -66,6 +68,7 @@ function division(numerator, denominator) {
 * Updated all dependencies
 * No longer use Mocha. Just jest
 * Added ESLint + Prettier to make our code nicer
+* Use Travis CI
 
 ### 1.0.0
 

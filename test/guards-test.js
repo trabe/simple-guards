@@ -34,5 +34,18 @@ describe("guards", () => {
         expect(() => guard(() => true, "error")).not.toThrow();
       });
     });
+
+    describe("README example", () => {
+      function division(numerator, denominator) {
+        guard(denominator !== 0, "denominator cannot be zero");
+      }
+      it("zero-denominator throws error", () => {
+        expect(() => division(3, 0)).toThrow("Broken guard: denominator cannot be zero");
+      });
+
+      it("non-zero-denominator works", () => {
+        expect(() => division(6, 2)).not.toThrow();
+      });
+    });
   });
 });

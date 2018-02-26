@@ -4,9 +4,9 @@
 
 ## Description
 
-Simple utilities to add guard clauses to yout JS code.
+Simple utilities to add guard clauses to your JS code.
 
-Guards raises an Error if a given condition is truthy.
+Guards raises an Error if a given condition is falsy.
 
 ## Features
 
@@ -15,19 +15,27 @@ Guards raises an Error if a given condition is truthy.
 
 ## Install
 
+```bash
+npm install simple-guards
 ```
-npm instal simple-guards
-````
+
+If you use `yarn`, just:
+
+```bash
+yarn add simple-guards
+```
 
 ## Usage
 
+The utility exports two methods: `guard` and `guards`.
+
 To set a simple guard:
 
-```
+```js
 import { guard } from "simple-guards";
 
 function division(numerator, denominator) {
-  guard(denominator === 0, "denominator cannot be zero");
+  guard(denominator !== 0, "denominator cannot be zero");
 
   // more awful code
 }
@@ -35,10 +43,9 @@ function division(numerator, denominator) {
 
 You can also pass a function to lazy evaluate an expensive guard:
 
-```
-
+```js
 function division(numerator, denominator) {
-  guard(() => expensiveDetectionOfZero(denominator), "denominator cannot be zero");
+  guard(() => !expensiveDetectionOfZero(denominator), "denominator cannot be zero");
 
   // more awful code
 }
@@ -48,14 +55,14 @@ function division(numerator, denominator) {
 If you want to lazy evaluate many guards you can use the `guards` method to
 avoid excessive wrapper functions:
 
-```
+```js
 import { guards } from "simple-guards";
 
 function division(numerator, denominator) {
-  guards((guard) => {
-    guard(expensiveDetectionOfZero(numerator), "we don't want numerator to be zero");
-    guard(expensiveDetectionOfZero(denominator), "denominator cannot be zero");
-  })
+  guards(guard => {
+    guard(!expensiveDetectionOfZero(numerator), "we don't want numerator to be zero");
+    guard(!expensiveDetectionOfZero(denominator), "denominator cannot be zero");
+  });
 
   // more awful code
 }

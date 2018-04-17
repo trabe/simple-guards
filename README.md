@@ -66,7 +66,7 @@ function division(numerator, denominator) {
 
   // more awful code
 }
-
+```
 
 ## Changelog
 
